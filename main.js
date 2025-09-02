@@ -12,7 +12,7 @@ function loadProducts() {
                     $product.innerHTML = `<img src="${product.image.mobile}" alt="${product.name}">
                                         <h3 class="category-product">${product.category}</h3>
                                         <h4 class="name-product">${product.name}</h4>
-                                        <p class="price-product">${product.price}</p>
+                                        <p class="price-product">$${product.price}</p>
                                         <div class="actions-product">
                                         <button>Add to Cart</button>
                                         </div>`

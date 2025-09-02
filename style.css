@@ -1,5 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/*400 600 700 */
+
+:root {
+    --Red: hsl(14, 86%, 42%);
+    --Green: hsl(159, 69%, 38%);
+    --Rose-50: hsl(20, 50%, 98%);
+    --Rose-100: hsl(13, 31%, 94%);
+    --Rose-300: hsl(14, 25%, 72%);
+    --Rose-400: hsl(7, 20%, 60%);
+    --Rose-500: hsl(12, 20%, 44%);
+    --Rose-900: hsl(14, 65%, 9%);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Karla';
+}
+
+body {
+    padding: 2em;
+    background-color: var(--Rose-100);
+}
+
+body main {
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+}
+
+.desserts-title {
+    font-size: 3em;
+    font-weight: 700;
+}
+
+.desserts-container {
+    padding-top: 2em;
+    display: grid;
+    gap: 2em;
+}
+
+article img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.category-product {
+    color: var(--Rose-300);
+    margin-top: 1.5em;
+}
+
+.name-product {
+    margin-top: .2em;
+}
+
+.price-product {
+    color: var(--Red);
+    margin-top: .2em;
+}
+
+section.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--Rose-50);
+    padding: 1.5em;
+    border-radius: 10px;
+} 
+
+section.cart h2 {
+    align-self: flex-start;
+    color: var(--Red);
+}
+
+section.cart img {
+    margin-top: 2em;
+}
+
+section.cart p {
+    margin-top: 1em;
+    color: var(--Rose-500);
 }
