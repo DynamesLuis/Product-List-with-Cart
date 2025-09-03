@@ -14,7 +14,12 @@ function loadProducts() {
                                         <h4 class="name-product">${product.name}</h4>
                                         <p class="price-product">$${product.price}</p>
                                         <div class="actions-product">
-                                        <button>Add to Cart</button>
+                                            <button class="add-btn"> <img src="./assets/images/icon-add-to-cart.svg" alt="ad-to-cart"> Add to Cart</button>
+                                            <div class="count-product">
+                                                <button class="decrement-btn"></button>
+                                                <p>1</p>
+                                                <button class="increment-btn"></button>
+                                            </div>
                                         </div>`
                     $dessertsContariner.appendChild($product);
                 });
