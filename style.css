@@ -61,24 +61,108 @@ article img {
 }
 
 section.cart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: var(--Rose-50);
     padding: 1.5em;
     border-radius: 10px;
-} 
+}
 
 section.cart h2 {
-    align-self: flex-start;
+    color: var(--Red);
+    font-weight: 800;
+}
+
+.empty-cart {
+    margin-top: 2em;
+    display: none;
+    /*display:flex*/
+    flex-direction: column;
+    align-items: center;
+}
+
+.empty-cart p {
+    margin-top: 1em;
+    color: var(--Rose-500);
+}
+
+.list-cart {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin-top: 1.5em;
+}
+
+.list-cart li {
+    border-bottom: 1px solid var(--Rose-100);
+    position: relative;
+}
+
+.delete-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url("./assets/images/icon-remove-item.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: .7em;
+    border: 1px solid var(--Rose-400);
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+li .li-name {
+    font-weight: 700;
+    margin-bottom: 1em;
+    color: var(--Rose-900);
+}
+
+li .li-info {
+    display: flex;
+    gap: 1em;
+}
+
+li .li-cantity {
     color: var(--Red);
 }
 
-section.cart img {
-    margin-top: 2em;
+li .li-price {
+    color: var(--Rose-500);
 }
 
-section.cart p {
-    margin-top: 1em;
-    color: var(--Rose-500);
+li .li-total {
+    color: var(--Rose-900);
+}
+
+.total-amount {
+    margin-top: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--Rose-900);
+}
+
+.total {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.msg {
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    gap: .3em;
+    color: var(--Rose-900);
+}
+
+.confirm-btn {
+    margin-top: 2em;
+    background-color: var(--Red);
+    color: var(--Rose-100);
+    width: 100%;
+    padding: .8em 0;
+    border: none;
+    border-radius: 2em;
+    font-size: 1.2rem;
+    font-weight: 500;
 }

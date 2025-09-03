@@ -19,8 +19,50 @@
     </section>
     <section class="cart">
       <h2>Your Cart <span>(0)</span></h2>
-      <img src="./assets/images/illustration-empty-cart.svg" alt="">
-      <p>Your added items will appear here</p>
+      <div class="empty-cart">
+        <img src="./assets/images/illustration-empty-cart.svg" alt="">
+        <p>Your added items will appear here</p>
+      </div>
+      <div class="full-cart">
+        <ul class="list-cart">
+          <li>
+            <button class="delete-btn"></button>
+            <p class="li-name">Classic Tiramisu</p>
+            <p class="li-info">
+              <span class="li-cantity">1x</span>
+              <span class="li-price">@ $5.50</span>
+              <span class="li-total">$5.50</span>
+            </p>
+          </li>
+          <li>
+            <button class="delete-btn"></button>
+            <p class="li-name">Vanilla Bean Créme Brulee</p>
+            <p class="li-info">
+              <span class="li-cantity">4x</span>
+              <span class="li-price">@ $7.00</span>
+              <span class="li-total">$28.00</span>
+            </p>
+          </li>
+          <li>
+            <button class="delete-btn"></button>
+            <p class="li-name">Vanilla Panna Cotta</p>
+            <p class="li-info">
+              <span class="li-cantity">2x</span>
+              <span class="li-price">@ $6.50</span>
+              <span class="li-total">$13.00</span>
+            </p>
+          </li>
+        </ul>
+        <div class="total-amount">
+          <p>Order total</p>
+          <p class="total">$46.50</p>
+        </div>
+        <div class="msg">
+          <img src="./assets/images/icon-carbon-neutral.svg" alt="carbon-neutral">
+          <p>This is a <strong>carbon-neutral</strong> delivery</p>
+        </div>
+        <button class="confirm-btn">Confirm Order</button>
+      </div>
     </section>
   </main>
 </body>
