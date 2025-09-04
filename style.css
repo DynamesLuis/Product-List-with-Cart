@@ -81,7 +81,8 @@ article img {
     border: none;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
+    /*display: flex*/
     align-items: center;
     justify-content: center;
     font-weight: 600;
@@ -93,7 +94,34 @@ article img {
 }
 
 .count-product {
-    display: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--Red);
+    border-radius: 2em;
+    border: none;
+    color: var(--Rose-50);
+    /*display: none;*/
+}
+
+.count-product button.decrement-btn,
+.count-product button.increment-btn {
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: .6em;
+    border: 1px solid var(--Rose-50);
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.count-product button.decrement-btn {
+    background-image: url("./assets/images/icon-decrement-quantity.svg");
+}
+
+.count-product button.increment-btn {
+    background-image: url("./assets/images/icon-increment-quantity.svg");
 }
 
 section.cart {
