@@ -2,6 +2,8 @@ const $dessertsContariner = document.querySelector(".desserts-container");
 const $confirmBtn = document.querySelector(".confirm-btn");
 const $newOrdenBtn = document.querySelector(".newOrden-btn");
 const $overlay = document.querySelector(".overlay");
+let products = [];      
+let cart = []; 
 
 main();
 
@@ -36,6 +38,7 @@ async function loadProducts() {
         const response = await fetch("./data.json");
         const result = await response.json();
         result.forEach(product => {
+            products.push(product);
             const $product = document.createElement("article");
             $product.classList.add("product");
             $product.innerHTML = `<img src="${product.image.mobile}" alt="${product.name}">
