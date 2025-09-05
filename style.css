@@ -28,6 +28,7 @@ body main {
     display: flex;
     flex-direction: column;
     gap: 4em;
+    position: relative;
 }
 
 .desserts-title {
@@ -219,7 +220,8 @@ li .li-total {
     color: var(--Rose-900);
 }
 
-.confirm-btn {
+.confirm-btn,
+.newOrden-btn {
     margin-top: 2em;
     background-color: var(--Red);
     color: var(--Rose-100);
@@ -229,4 +231,127 @@ li .li-total {
     border-radius: 2em;
     font-size: 1.2rem;
     font-weight: 500;
+}
+
+/*popup*/
+
+.popup {
+    position: absolute;
+    display: none;
+    cursor: pointer;
+    background-color: var(--Rose-50);
+    padding: 2em;
+    z-index: 2;
+    width: 100%;
+    left: 0;
+    top: 100px;
+    border-radius: 1.5em;
+}
+
+.popup.show {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup>img {
+    width: 3em;
+}
+
+.popup h2 {
+    font-size: 2.5em;
+    font-weight: 800;
+    margin-top: .5em;
+}
+
+.popup>p {
+    margin-top: .5em;
+    color: var(--Rose-500);
+    font-weight: 400;
+}
+
+.list-container {
+    padding: 1.5em;
+    margin-top: 2em;
+    background-color: var(--Rose-100);
+}
+
+.mini-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.mini-list li {
+    display: flex;
+    align-items: center;
+    /* centra verticalmente */
+    gap: 12px;
+    /* espacio entre elementos */
+    padding: 1.2em 0;
+    border-bottom: 1px solid var(--Rose-300);
+}
+
+.mini-list li:first-of-type {
+    padding-top: 0;
+}
+
+.mini-list li img {
+    width: 20%;
+    /* ajusta al tamaño que quieras */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.mini-list li div {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    /* apila los <p> */
+    flex: 1;
+    /* ocupa el espacio disponible */
+    min-width: 0;
+    /* 🔑 necesario para que funcione el ellipsis */
+}
+
+.name-product {
+    white-space: nowrap;
+    /* evita salto de línea */
+    overflow: hidden;
+    /* oculta lo que sobra */
+    text-overflow: ellipsis;
+    /* muestra los "..." */
+    font-weight: 600;
+    color: var(--Rose-900);
+}
+
+.info-product span {
+    margin-right: 6px;
+}
+
+.prices {
+    display: flex;
+    gap: 10px;
+}
+
+.product-amount {
+    color: var(--Red);
+    font-weight: 500;
+}
+
+.product-price {
+    color: var(--Rose-500);
+}
+
+.total-product {
+    flex-shrink: 0;
+    /* evita que se comprima */
+    margin-left: auto;
+    /* lo empuja a la derecha */
+    font-weight: 600;
+    color: var(--Rose-900);
+}
+
+.list-container .total-amount {
+    margin-top: 1.5em;
 }

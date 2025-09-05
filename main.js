@@ -1,5 +1,7 @@
 const $dessertsContariner = document.querySelector(".desserts-container");
+const $confirmBtn = document.querySelector(".confirm-btn");
 
+$confirmBtn.addEventListener('click', myFunction);
 loadProducts();
 
 function loadProducts() {
@@ -27,4 +29,11 @@ function loadProducts() {
     } catch (error) {
         console.log.error("Error: " + error);
     }
+}
+
+function myFunction() {
+    console.log("functions");
+    
+  const $popup = document.querySelector(".popup");
+  $popup.classList.toggle("show");
 }
