@@ -3,11 +3,14 @@ const $confirmBtn = document.querySelector(".confirm-btn");
 const $newOrdenBtn = document.querySelector(".newOrden-btn");
 const $overlay = document.querySelector(".overlay");
 
-$confirmBtn.addEventListener('click', showPopup);
-$newOrdenBtn.addEventListener('click', hidePopup);
-
+initEvents();
 loadProducts();
 
+
+function initEvents() {
+    $confirmBtn.addEventListener('click', showPopup);
+    $newOrdenBtn.addEventListener('click', hidePopup);
+}
 function loadProducts() {
     try {
         fetch('./data.json')
