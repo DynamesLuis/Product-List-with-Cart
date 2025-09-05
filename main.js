@@ -3,7 +3,7 @@ const $confirmBtn = document.querySelector(".confirm-btn");
 const $newOrdenBtn = document.querySelector(".newOrden-btn");
 const $overlay = document.querySelector(".overlay");
 
-$confirmBtn.addEventListener('click', myFunction);
+$confirmBtn.addEventListener('click', showPopup);
 $newOrdenBtn.addEventListener('click', hidePopup);
 
 loadProducts();
@@ -35,7 +35,7 @@ function loadProducts() {
     }
 }
 
-function myFunction() {
+function showPopup() {
     $overlay.classList.remove("hidden");
     setTimeout(() => {
         $overlay.classList.add("show");
