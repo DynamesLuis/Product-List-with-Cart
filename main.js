@@ -14,11 +14,22 @@ async function main() {
 function initEvents() {
     $confirmBtn.addEventListener('click', showPopup);
     $newOrdenBtn.addEventListener('click', hidePopup);
-    
-
+    const $products = document.querySelectorAll(".product");
+    $products.forEach($product => {
+        const $addTocartBtn = $product.querySelector(".add-btn");
+        $addTocartBtn.addEventListener('click', () => handleProductSelection($product, $addTocartBtn));
+    })
 }
 
-
+function handleProductSelection($product, $addTocartBtn) {
+    //colocar en estado active
+    $product.classList.add("active");
+    //ocultar boton add
+    $addTocartBtn.style.display = "none";
+    //mostrar increment y decrement
+    const $countproduct = $product.querySelector(".count-product");
+    $countproduct.style.display = "flex";
+}
 
 async function loadProducts() {
     try {
