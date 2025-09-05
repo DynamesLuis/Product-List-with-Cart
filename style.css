@@ -222,7 +222,7 @@ li .li-total {
 
 .confirm-btn,
 .newOrden-btn {
-    margin-top: 2em;
+    margin-top: 1.2em;
     background-color: var(--Red);
     color: var(--Rose-100);
     width: 100%;
@@ -234,23 +234,48 @@ li .li-total {
 }
 
 /*popup*/
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* fondo negro transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    overflow-y: scroll;
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hidden {
+    display: none;
+}
 
 .popup {
     position: absolute;
-    display: none;
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
     background-color: var(--Rose-50);
     padding: 2em;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
+    max-height: 100dvh;
     left: 0;
     top: 100px;
-    border-radius: 1.5em;
-}
-
-.popup.show {
-    display: flex;
-    flex-direction: column;
+    border-top-left-radius: 1.5em;
+    border-top-right-radius: 1.5em;
+    overflow-y: scroll;
 }
 
 .popup>img {

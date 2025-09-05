@@ -1,7 +1,11 @@
 const $dessertsContariner = document.querySelector(".desserts-container");
 const $confirmBtn = document.querySelector(".confirm-btn");
+const $newOrdenBtn = document.querySelector(".newOrden-btn");
+const $overlay = document.querySelector(".overlay");
 
 $confirmBtn.addEventListener('click', myFunction);
+$newOrdenBtn.addEventListener('click', hidePopup);
+
 loadProducts();
 
 function loadProducts() {
@@ -32,8 +36,15 @@ function loadProducts() {
 }
 
 function myFunction() {
-    console.log("functions");
-    
-  const $popup = document.querySelector(".popup");
-  $popup.classList.toggle("show");
+    $overlay.classList.remove("hidden");
+    setTimeout(() => {
+        $overlay.classList.add("show");
+    }, 10);
+}
+
+function hidePopup() {
+    $overlay.classList.remove("show");
+    setTimeout(() => {
+        $overlay.classList.add("hidden");
+    }, 300);
 }
