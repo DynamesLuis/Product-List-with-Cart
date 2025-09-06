@@ -2,11 +2,12 @@ const $dessertsContariner = document.querySelector(".desserts-container");
 const $confirmBtn = document.querySelector(".confirm-btn");
 const $newOrdenBtn = document.querySelector(".newOrden-btn");
 const $overlay = document.querySelector(".overlay");
+const $cartContainer = document.querySelector(".full-cart");
+const $emptyCart = document.querySelector(".empty-cart");
 let products = [];      
 let cart = []; 
 
 main();
-
 
 async function main() {
     await loadProducts();
@@ -31,6 +32,46 @@ function handleProductSelection($product, $addTocartBtn) {
     //mostrar increment y decrement
     const $countproduct = $product.querySelector(".count-product");
     $countproduct.style.display = "flex";
+    //guardar en carrito
+    addToCart($product);
+}
+
+function addToCart($product) {
+    //obtener el nombre
+    const productName = $product.querySelector(".name-product").textContent;
+    //guardarlo en carproducts
+    const productInfo = products.find(product => product.name == productName);
+    const {name, price, image} = productInfo;
+    const {thumbnail} = image;
+    let count = 1;
+    cart.push({name, price, thumbnail, count});
+    //renderizar
+    renderCart();
+}
+
+function renderCart() {
+    const $cartList = $cartContainer.querySelector(".list-cart");
+    $cartList.innerHTML = "";
+    cart.forEach(product => {
+        const $liElement = document.createElement("li");
+        $liElement.innerHTML = `<li>
+                                <button class="delete-btn"></button>
+                                <p class="li-name">${product.name}</p>
+                                <p class="li-info">
+                                    <span class="li-cantity">${product.count}x</span>
+                                    <span class="li-price">@ $${product.price}</span>
+                                    <span class="li-total">$${product.count * product.price}</span>
+                                </p>
+                            </li>`;
+        $cartList.appendChild($liElement);  
+        $emptyCart.style.display = "none";
+        $cartContainer.style.display = "block";
+        renderCartTotal();
+    })
+}
+
+function renderCartTotal() {
+    
 }
 
 async function loadProducts() {
