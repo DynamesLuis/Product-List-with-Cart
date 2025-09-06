@@ -4,6 +4,7 @@ const $newOrdenBtn = document.querySelector(".newOrden-btn");
 const $overlay = document.querySelector(".overlay");
 const $cartContainer = document.querySelector(".full-cart");
 const $emptyCart = document.querySelector(".empty-cart");
+const $cartSection = document.querySelector(".cart");
 let products = [];      
 let cart = []; 
 
@@ -71,7 +72,11 @@ function renderCart() {
 }
 
 function renderCartTotal() {
-    
+    const $productCount = $cartSection.querySelector(".product-count");
+    $productCount.textContent = `(${cart.length})`;
+    const totalAmount = cart.reduce(function (acc, obj) { return acc + obj.price * obj.count; }, 0);
+    const $total= $cartSection.querySelector(".total");
+    $total.textContent = `$${totalAmount}`;    
 }
 
 async function loadProducts() {
