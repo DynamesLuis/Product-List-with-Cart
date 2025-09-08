@@ -5,6 +5,7 @@ const $overlay = document.querySelector(".overlay");
 const $cartContainer = document.querySelector(".full-cart");
 const $emptyCart = document.querySelector(".empty-cart");
 const $cartSection = document.querySelector(".cart");
+
 let products = [];
 let cart = [];
 
@@ -51,8 +52,11 @@ function incrementProduct($amountAdded, $product) {
 
     const productName = $product.querySelector(".name-product").textContent;
     const productIndex = products.findIndex(product => product.name == productName);
+    console.log(cart[productIndex]); // cuando aumentas o disminuyes sin orden se pierde cual track del producto
+    //si se hace en orden si se mantiene porque primero agregas, se mantiene track de ese producto y luego aumentas 
+    //o decrementas
+    //buscar una forma de obtener otra vez a que botón pertenece ese ese botón
     cart[productIndex].count = count;
-    console.log(cart);
     renderCart();
 }
 function decrementProduct($amountAdded, $product) {
@@ -141,6 +145,25 @@ function showPopup() {
     setTimeout(() => {
         $overlay.classList.add("show");
     }, 10);
+    const $miniList = document.querySelector(".mini-list");
+    cart.forEach(product => {
+        const $liElement = document.createElement("li");
+        $liElement.innerHTML = `<li>
+                                    <img src="${product.thumbnail}" alt="">
+                                    <div>
+                                        <p class="name-product">${product.name}</p>
+                                        <p class="prices">
+                                            <span class="product-amount">${product.count}x</span>
+                                            <span class="product-price">@ ${product.price}</span>
+                                        </p>
+                                    </div>
+                                    <p class="total-product">$${product.count * product.price}</p>
+                                </li>`
+        $miniList.appendChild($liElement);
+    });
+    const $productCount = $overlay.querySelector(".popup .total");
+    const totalAmount = cart.reduce(function (acc, obj) { return acc + obj.price * obj.count; }, 0);
+    $productCount.textContent = `$${totalAmount}`;
 }
 
 function hidePopup() {
