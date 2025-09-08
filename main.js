@@ -5,8 +5,8 @@ const $overlay = document.querySelector(".overlay");
 const $cartContainer = document.querySelector(".full-cart");
 const $emptyCart = document.querySelector(".empty-cart");
 const $cartSection = document.querySelector(".cart");
-let products = [];      
-let cart = []; 
+let products = [];
+let cart = [];
 
 main();
 
@@ -33,19 +33,48 @@ function handleProductSelection($product, $addTocartBtn) {
     //mostrar increment y decrement
     const $countproduct = $product.querySelector(".count-product");
     $countproduct.style.display = "flex";
+    //activar listener en increment y decrement
+    const $decrementBtn = $countproduct.querySelector(".decrement-btn");
+    const $incrementBtn = $countproduct.querySelector(".increment-btn");
+    const $amountAdded = $countproduct.querySelector("p");
+    $decrementBtn.addEventListener('click', () => decrementProduct($amountAdded, $product));
+    $incrementBtn.addEventListener('click', () => incrementProduct($amountAdded, $product));
     //guardar en carrito
     addToCart($product);
 }
 
+
+function incrementProduct($amountAdded, $product) {
+    let count = parseInt($amountAdded.textContent);
+    count++;
+    $amountAdded.textContent = count;
+
+    const productName = $product.querySelector(".name-product").textContent;
+    const productIndex = products.findIndex(product => product.name == productName);
+    cart[productIndex].count = count;
+    console.log(cart);
+    renderCart();
+}
+function decrementProduct($amountAdded, $product) {
+    let count = parseInt($amountAdded.textContent);
+    if (count == 1) return;
+    count--;
+    $amountAdded.textContent = count;
+
+    const productName = $product.querySelector(".name-product").textContent;
+    const productIndex = products.findIndex(product => product.name == productName);
+    cart[productIndex].count = count;
+    renderCart();
+}
 function addToCart($product) {
     //obtener el nombre
     const productName = $product.querySelector(".name-product").textContent;
     //guardarlo en carproducts
     const productInfo = products.find(product => product.name == productName);
-    const {name, price, image} = productInfo;
-    const {thumbnail} = image;
+    const { name, price, image } = productInfo;
+    const { thumbnail } = image;
     let count = 1;
-    cart.push({name, price, thumbnail, count});
+    cart.push({ name, price, thumbnail, count });
     //renderizar
     renderCart();
 }
@@ -64,7 +93,7 @@ function renderCart() {
                                     <span class="li-total">$${product.count * product.price}</span>
                                 </p>
                             </li>`;
-        $cartList.appendChild($liElement);  
+        $cartList.appendChild($liElement);
         $emptyCart.style.display = "none";
         $cartContainer.style.display = "block";
         renderCartTotal();
@@ -75,8 +104,8 @@ function renderCartTotal() {
     const $productCount = $cartSection.querySelector(".product-count");
     $productCount.textContent = `(${cart.length})`;
     const totalAmount = cart.reduce(function (acc, obj) { return acc + obj.price * obj.count; }, 0);
-    const $total= $cartSection.querySelector(".total");
-    $total.textContent = `$${totalAmount}`;    
+    const $total = $cartSection.querySelector(".total");
+    $total.textContent = `$${totalAmount}`;
 }
 
 async function loadProducts() {
