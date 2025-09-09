@@ -5,6 +5,7 @@ const $overlay = document.querySelector(".overlay");
 const $cartContainer = document.querySelector(".full-cart");
 const $emptyCart = document.querySelector(".empty-cart");
 const $cartSection = document.querySelector(".cart");
+const $productCount = $cartSection.querySelector(".product-count");
 
 let products = [];
 let cart = [];
@@ -105,7 +106,7 @@ function renderCart() {
 }
 
 function renderCartTotal() {
-    const $productCount = $cartSection.querySelector(".product-count");
+
     $productCount.textContent = `(${cart.length})`;
     const totalAmount = cart.reduce(function (acc, obj) { return acc + obj.price * obj.count; }, 0);
     const $total = $cartSection.querySelector(".total");
@@ -171,4 +172,25 @@ function hidePopup() {
     setTimeout(() => {
         $overlay.classList.add("hidden");
     }, 300);
+    const $miniList = document.querySelector(".mini-list");
+    $miniList.innerHTML = "";
+    cart = [];
+    //ocultar cart
+    $cartContainer.style.display = "none";
+    //mostrar empty 
+    $emptyCart.style.display = "flex";
+    $productCount.textContent = "(0)";
+    //reiniciar products active and buttons
+    const $products = document.querySelectorAll(".product");
+    $products.forEach($product => {
+        $product.classList.remove("active");
+        const $addTocartBtn = $product.querySelector(".add-btn");
+        $addTocartBtn.style.display = "flex";
+        //mostrar increment y decrement
+        const $countproduct = $product.querySelector(".count-product");
+        const $amountAdded = $countproduct.querySelector("p");
+        $amountAdded.textContent = "1";
+        $countproduct.style.display = "none";
+    })
+
 }
