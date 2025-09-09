@@ -99,10 +99,26 @@ function renderCart() {
                                 </p>
                             </li>`;
         $cartList.appendChild($liElement);
+        const $deleteBtn = $liElement.querySelector(".delete-btn");
+        $deleteBtn.addEventListener("click", () => deleteFromCart($liElement));
         $emptyCart.style.display = "none";
         $cartContainer.style.display = "block";
         renderCartTotal();
     })
+}
+
+function deleteFromCart($liElement) {
+    const productName = $liElement.querySelector(".li-name").textContent;
+    const index = cart.findIndex(element => element.name == productName);
+    console.log(index);
+    
+    if (index > -1) { // only splice array when item is found
+        cart.splice(index, 1); // 2nd parameter means remove one item only
+    }
+    console.log(cart);
+    
+    renderCart();
+    //set inactive the product
 }
 
 function renderCartTotal() {
