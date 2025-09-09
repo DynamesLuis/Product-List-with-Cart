@@ -46,7 +46,7 @@ article {
     position: relative;
 }
 
-article.active > img {
+article.active>img {
     border: 1px solid var(--Red);
 }
 
@@ -387,4 +387,56 @@ li .li-total {
 
 .list-container .total-amount {
     margin-top: 1.5em;
+}
+
+@media (min-width: 1000px) {
+    body main {
+        flex-direction: row;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .products {
+        flex: 2;
+    }
+
+    .desserts-container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 1em;
+        grid-row-gap: 1em;
+    }
+
+    .product .actions-product:hover {
+        border: 1px solid var(--Red);
+    }
+
+    .count-product button:hover {
+        background-color: var(--Rose-50);
+    }
+
+    .count-product button:hover.decrement-btn {
+        background-image: url("./assets/images/icon-decrement-quantity\ \(hover\).svg");
+    }
+
+    .count-product button:hover.increment-btn {
+        background-image: url("./assets/images/icon-increment-quantity\ \(hover\).svg");
+    }
+
+    .cart {
+        flex: 1;
+        height: fit-content;
+    }
+
+    .delete-btn:hover {
+        border: 1px solid var(--Rose-900);
+        background-image: url("./assets/images/icon-remove-item\ \(hover\).svg");
+    }
+
+    .confirm-btn:hover {
+        filter: brightness(85%);
+        /* reduce la luz → más oscuro */
+    }
 }
