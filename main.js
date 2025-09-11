@@ -47,17 +47,12 @@ function handleProductSelection($product, $addTocartBtn) {
 
 
 function incrementProduct($amountAdded, $product) {
-    let count = parseInt($amountAdded.textContent);
-    count++;
-    $amountAdded.textContent = count;
-
+    let initialCount = parseInt($amountAdded.textContent);
+    initialCount++;
+    $amountAdded.textContent = initialCount;
     const productName = $product.querySelector(".name-product").textContent;
-    const productIndex = products.findIndex(product => product.name == productName);
-    console.log(cart[productIndex]); // cuando aumentas o disminuyes sin orden se pierde cual track del producto
-    //si se hace en orden si se mantiene porque primero agregas, se mantiene track de ese producto y luego aumentas 
-    //o decrementas
-    //buscar una forma de obtener otra vez a que botón pertenece ese ese botón
-    cart[productIndex].count = count;
+    const productIndex = cart.findIndex(product => product.name == productName);
+    cart[productIndex].count = initialCount;
     renderCart();
 }
 function decrementProduct($amountAdded, $product) {
@@ -67,7 +62,7 @@ function decrementProduct($amountAdded, $product) {
     $amountAdded.textContent = count;
 
     const productName = $product.querySelector(".name-product").textContent;
-    const productIndex = products.findIndex(product => product.name == productName);
+    const productIndex = cart.findIndex(product => product.name == productName);
     cart[productIndex].count = count;
     renderCart();
 }
@@ -112,8 +107,8 @@ function deleteFromCart($liElement) {
     const index = cart.findIndex(element => element.name == productName);
     console.log(index);
     
-    if (index > -1) { // only splice array when item is found
-        cart.splice(index, 1); // 2nd parameter means remove one item only
+    if (index > -1) { 
+        cart.splice(index, 1); 
     }
     console.log(cart);
     
