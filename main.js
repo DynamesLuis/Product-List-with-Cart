@@ -24,7 +24,25 @@ function initEvents() {
     $products.forEach($product => {
         const $addTocartBtn = $product.querySelector(".add-btn");
         $addTocartBtn.addEventListener('click', () => handleProductSelection($product, $addTocartBtn));
+    });
+    window.addEventListener('resize', changeImgs);
+}
+
+
+function changeImgs() {
+    const screenSize = window.screen.width;
+    const $products = document.querySelectorAll(".product");
+    $products.forEach(($product, index) => {
+        const $img = $product.querySelector("img");
+        if (screenSize > 1000) {
+            $img.src = products[index].image.desktop;
+        }
+        else {
+            $img.src = products[index].image.mobile;
+        }
     })
+
+
 }
 
 function handleProductSelection($product, $addTocartBtn) {
@@ -106,12 +124,12 @@ function deleteFromCart($liElement) {
     const productName = $liElement.querySelector(".li-name").textContent;
     const index = cart.findIndex(element => element.name == productName);
     console.log(index);
-    
-    if (index > -1) { 
-        cart.splice(index, 1); 
+
+    if (index > -1) {
+        cart.splice(index, 1);
     }
     console.log(cart);
-    
+
     renderCart();
     //set inactive the product
 }
@@ -132,7 +150,8 @@ async function loadProducts() {
             products.push(product);
             const $product = document.createElement("article");
             $product.classList.add("product");
-            $product.innerHTML = `<img src="${product.image.mobile}" alt="${product.name}">
+            const imgSrc = window.screen.width > 1000 ? product.image.desktop : product.image.mobile;
+            $product.innerHTML = `<img src="${imgSrc}" alt="${product.name}">
                                   <h3 class="category-product">${product.category}</h3>
                                   <h4 class="name-product">${product.name}</h4>
                                   <p class="price-product">$${product.price}</p>
