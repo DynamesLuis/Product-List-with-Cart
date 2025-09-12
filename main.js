@@ -123,15 +123,18 @@ function renderCart() {
 function deleteFromCart($liElement) {
     const productName = $liElement.querySelector(".li-name").textContent;
     const index = cart.findIndex(element => element.name == productName);
-    console.log(index);
 
     if (index > -1) {
         cart.splice(index, 1);
     }
-    console.log(cart);
 
     renderCart();
-    //set inactive the product
+    setInactive(productName);
+}
+
+function setInactive(productName) {
+    const $product = document.querySelector(`.product:has(img[alt="${productName}"])`);
+    restarProductActive($product);
 }
 
 function renderCartTotal() {
@@ -212,7 +215,11 @@ function hidePopup() {
     $productCount.textContent = "(0)";
     //reiniciar products active and buttons
     const $products = document.querySelectorAll(".product");
-    $products.forEach($product => {
+    $products.forEach($product => restarProductActive($product))
+
+}
+
+function restarProductActive($product) {
         $product.classList.remove("active");
         const $addTocartBtn = $product.querySelector(".add-btn");
         $addTocartBtn.style.display = "flex";
@@ -221,6 +228,4 @@ function hidePopup() {
         const $amountAdded = $countproduct.querySelector("p");
         $amountAdded.textContent = "1";
         $countproduct.style.display = "none";
-    })
-
-}
+    }
